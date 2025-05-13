@@ -1,0 +1,66 @@
+
+
+Entfernen Sie die Verwendung von `useRouter` und die `handleNavigateClick`-Funktion **aus Ihrem `FeatureCard`-Component**. Die Navigation wird bereits in der `page.js` behandelt und der entsprechende Handler (`handleNavigateClick`) wird als Prop an `FeatureCard` übergeben. Das `FeatureCard` muss diesen Handler nur an seinen Button weiterleiten.
+
+**Schritte zur Korrektur:**
+
+1. **Öffnen Sie Ihre `components/FeatureCard.js`-Datei.**
+2. **Entfernen Sie diese Zeilen:**
+    
+
+    
+    ``` JavaScript
+    import { useRouter } from "next/router"; // oder "next/navigation"
+    // ...
+    const router = useRouter();
+    const handleNavigateClick = () => {
+      router.push("/shop");
+    };
+    ```
+    
+3. **Passen Sie die Props im `FeatureCard`-Component an:** Im `FeatureCard`-Component erwarten Sie jetzt Props wie `title`, `description`, `buttonText` und `onClickHandler` (achten Sie auf die korrekte Schreibweise `onClickHandler`).
+4. **Übergeben Sie den `onClickHandler` an den Button:** Innerhalb des `FeatureCard`-Components rendern Sie Ihren Button und übergeben ihm den erhaltenen `onClickHandler`-Prop.
+
+**Korrigierter Code für `components/FeatureCard.js` (Beispiel):**
+
+
+
+``` JavaScript
+import Button from "./Button"; // Stellen Sie sicher, dass der Pfad zu Ihrem Button-Component korrekt ist
+
+export default function FeatureCard({ title, description, buttonText, onClickHandler }) {
+  // KEIN useRouter hier! Die Navigation wird vom Parent (page.js) gesteuert
+
+  return (
+    <div className=" /* Ihre bestehenden Klassen */ ">
+      <h1 className=" /* ... */ ">{title}</h1>
+      <p className=" /* ... */ ">{description}</p>
+
+      {/* Wenn buttonText und onClickHandler übergeben wurden, rendern Sie den Button */}
+      {buttonText && onClickHandler && (
+        <div className="bg-blue-600 text-white"> {/* Ihre bestehenden Klassen für den Button-Container */}
+          <Button buttonText={buttonText} onClickHandler={onClickHandler} />
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+**Stellen Sie sicher, dass in Ihrer `page.js` der Prop-Name `onClickHandler` (mit großem C) verwendet wird:**
+
+
+
+``` JavaScript
+// In page.js
+<FeatureCard
+  title="Aktuelles"
+  description="Neues aus meiner Welt"
+  buttonText="JETZT SHOPPEN"
+  onClickHandler={handleNavigateClick} // Hier den Handler übergeben
+/>
+```
+
+(Im `FeatureCard` Code, den Sie zuvor zeigten, verwendeten Sie `<Button ... oncklickHandler={handleNavigateClick} />` als Children. Das ist eine andere Art der Übergabe und passt nicht zur Prop-Definition in `FeatureCard({ ..., Button })`. Der oben vorgeschlagene Weg, `buttonText` und `onClickHandler` als direkte Props an `FeatureCard` zu übergeben, ist klarer und Standard.)
+
+Indem Sie `useRouter` aus `FeatureCard` entfernen, stellen Sie sicher, dass der Hook nur in der `page.js` aufgerufen wird, wo der Router-Kontext garantiert verfügbar ist. Die Navigationslogik bleibt zentral in der Seite, und der `FeatureCard` ist nur für die Darstellung und das Ausführen des übergebenen Handlers zuständig.

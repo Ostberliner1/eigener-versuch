@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link";
+import Header from "./Header";
 
 
 export default function Hero() {
@@ -13,6 +14,7 @@ export default function Hero() {
       
       ">
         <div>
+          <Header />
             <form className="ml-190 ">
                   <input className="bg-white text-gray-700 w-30" type="text" placeholder="Suche"></input>
                   <button className="
@@ -31,73 +33,7 @@ export default function Hero() {
         ">
             Willkommen in meinem Block</p>
 
-            <nav className="
-            px-1
-            py-20
-            ">
-                <ul className="
-                flex
-                space-x-20
-                
-                px-1
-                ml-auto
-                
-                ">
-                    <li>
-                      <Link href="/shop" 
-                       className="
-                        hover:text-blue-500
-                        transition-colors
-                        duration-150"
-                      
-            
-                        >
-                          Shop
-                      
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/kontakt" 
-                       className="
-                        hover:text-blue-500
-                        transition-colors
-                        duration-150"
-                      >
-            
-                        Kontakt
-                      
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/musik" 
-                      className="
-                        hover:text-blue-500
-                        transition-colors
-                        duration-150"
-                      >
-            
-                        Musik
-                      
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/info" 
-                    className="
-                        hover:text-blue-500
-                        transition-colors
-                        duration-150"
-                      >
-            
-                        Info
-                      
-                      </Link>
-                    </li>
-                </ul>
-                
-
-
-                
-            </nav>
+           
 
             
   

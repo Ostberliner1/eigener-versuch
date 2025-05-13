@@ -2,11 +2,9 @@ import Link from "next/link";
 import Button from "./Button";
 import { useRouter } from "next/router";
 
-export default function FeatureCard({ title, description, Button }) {
-  const router = useRouter();
-  const handleNavigateClick = () => {
-    router.push("/shop");
-  };
+export default function FeatureCard({ title, description, buttonText, onClickHandler }) {
+  
+  
   return (
     <div
       className="
@@ -17,12 +15,13 @@ export default function FeatureCard({ title, description, Button }) {
     px-10
     shadow-xl/30
     shadow-blue-200/50
+    h-70
     
     "
     >
       <h1
         className="
-      text-6xl
+      text-4xl
       "
       >
         {title}
@@ -30,14 +29,17 @@ export default function FeatureCard({ title, description, Button }) {
       <p
         className="
       text-black
+      py-3
       "
       >
         {description}
       </p>
-
-      <div className="bg-blue-600 text-white">
-        <Button buttonText="JETZT SHOPPEN" oncklickHandler={handleNavigateClick} />
+      
+      {buttonText && onClickHandler &&(
+      <div className="bg-red-600 hover:bg-black text-white w-35 mx-auto rounded-full">
+        <Button buttonText={buttonText} onClickHandler={onClickHandler} />
       </div>
+      )}
     </div>
   );
 }
