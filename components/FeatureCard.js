@@ -1,6 +1,7 @@
+
 import Link from "next/link";
 import Button from "./Button";
-import { useRouter } from "next/router";
+
 
 export default function FeatureCard({ title, description, buttonText, onClickHandler }) {
   
@@ -11,17 +12,23 @@ export default function FeatureCard({ title, description, buttonText, onClickHan
     bg-yellow-600
     text-center
     rounded-full
-    py-12
-    px-10
+    
     shadow-xl/30
     shadow-blue-200/50
-    h-70
+    
+    w-full
+    aspect-square
+    flex
+    flex-col
+    justify-center
+    py-3
+    
     
     "
     >
       <h1
         className="
-      text-4xl
+      text-7xl
       "
       >
         {title}
@@ -30,13 +37,14 @@ export default function FeatureCard({ title, description, buttonText, onClickHan
         className="
       text-black
       py-3
+      text-xl
       "
       >
         {description}
       </p>
       
       {buttonText && onClickHandler &&(
-      <div className="bg-red-600 hover:bg-black text-white w-35 mx-auto rounded-full">
+      <div className="bg-red-600 hover:bg-black text-white w-45 text-xl mx-auto rounded-full">
         <Button buttonText={buttonText} onClickHandler={onClickHandler} />
       </div>
       )}

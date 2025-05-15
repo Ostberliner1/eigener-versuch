@@ -12,10 +12,20 @@ export default function Home() {
   const router = useRouter();
   const handleNavigateClick = () => {
     router.push("/shop");
+    
   };
+  const handleNavigateClickInfo = () => {
+    router.push("/info#wo");
+  };
+  const handleNavigateClickInfoNew = () => {
+    router.push("/info#neu");
+  };
+  
   return (
     <div>
       <Hero />
+
+      
       
       <section
         className="
@@ -23,13 +33,14 @@ export default function Home() {
         
         "
         >
+          
           <div
             className="
             grid
             grid-cols-1
             md:grid-cols-3
             gap-4
-            p-4
+            
             py-12
             
           "
@@ -39,7 +50,7 @@ export default function Home() {
               title="Aktuelles"
               description="Neues aus meiner Welt"
               buttonText="Zum Thema"
-              onClickHandler={handleNavigateClick}
+              onClickHandler={handleNavigateClickInfoNew}
             />
   
             <FeatureCard
@@ -53,7 +64,7 @@ export default function Home() {
               title="Kanäle"
               description="Wo du mich findest"
               buttonText="Suche"
-              onClickHandler={handleNavigateClick}
+              onClickHandler={handleNavigateClickInfo}
             />
   
             <FeatureCard
@@ -67,14 +78,14 @@ export default function Home() {
               title="Lives"
               description="Wo bin ich wann Live"
               buttonText="Suche"
-              onClickHandler={handleNavigateClick}
+              onClickHandler={handleNavigateClickInfo}
             />
   
             <FeatureCard
               title="Termine"
               description="Auftritte und co"
               buttonText="Suche"
-              onClickHandler={handleNavigateClick}
+              onClickHandler={handleNavigateClickInfo}
             />
           </div>
         </section>

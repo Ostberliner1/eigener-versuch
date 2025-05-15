@@ -1,4 +1,4 @@
-function Button({buttonText, buttonLink, oncklickHandler}) {
+function Button({buttonText, buttonLink, onClickHandler}) {
     const nav = (event) => {
         if(oncklickHandler){
             oncklickHandler(event)
@@ -6,7 +6,7 @@ function Button({buttonText, buttonLink, oncklickHandler}) {
 
     }
     return (
-        <button oncklick={oncklickHandler} >{buttonText}</button>
+        <button onClick={onClickHandler} >{buttonText}</button>
       
     );
   }
